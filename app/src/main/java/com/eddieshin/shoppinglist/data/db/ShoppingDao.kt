@@ -1,7 +1,8 @@
-package com.eddieshin.shoppinglist
+package com.eddieshin.shoppinglist.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.eddieshin.shoppinglist.data.db.entities.ShoppingItem
 
 @Dao
 interface ShoppingDao {

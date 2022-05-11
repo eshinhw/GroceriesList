@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.shopping_item.view.*
+import com.eddieshin.shoppinglist.data.db.entities.ShoppingItem
 
 class ShoppingItemAdapter(val context: Context, val items: List<ShoppingItem>) : RecyclerView.Adapter<ShoppingItemAdapter.ShoppingViewHolder>() {
 
