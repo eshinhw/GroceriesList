@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val items = createSampleItems()
-        val adapter = ItemsAdapter(this, items)
+        val adapter = ShoppingItemAdapter(this, items)
 
         rvItems.layoutManager = LinearLayoutManager(this)
         rvItems.adapter = adapter

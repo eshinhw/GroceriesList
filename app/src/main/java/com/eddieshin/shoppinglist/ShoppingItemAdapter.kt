@@ -7,23 +7,26 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.shopping_item.view.*
 
-class ItemsAdapter(val context: Context, val items: List<ShoppingItem>) : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
+class ShoppingItemAdapter(val context: Context, val items: List<ShoppingItem>) : RecyclerView.Adapter<ShoppingItemAdapter.ShoppingViewHolder>() {
 
     companion object {
         private const val TAG = "ItemsAdapter"
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    inner class ShoppingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoppingViewHolder {
+        return ShoppingViewHolder(LayoutInflater.from(context).inflate(R.layout.shopping_item, parent, false))
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ShoppingViewHolder, position: Int) {
         Log.i(TAG, "onBindViewHolder")
 
         val item = items[position]
+
+        val tvName = holder.itemView.tvName
 
         val tvName = holder.itemView.findViewById<TextView>(R.id.tvName)
         val tvAmount = holder.itemView.findViewById<TextView>(R.id.tvAmount)
