@@ -26,8 +26,6 @@ class ShoppingItemAdapter(val context: Context, val items: List<ShoppingItem>) :
 
         val item = items[position]
 
-        val tvName = holder.itemView.tvName
-
         val tvName = holder.itemView.findViewById<TextView>(R.id.tvName)
         val tvAmount = holder.itemView.findViewById<TextView>(R.id.tvAmount)
 
