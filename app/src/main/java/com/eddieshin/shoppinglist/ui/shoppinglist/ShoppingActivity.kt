@@ -2,6 +2,7 @@ package com.eddieshin.shoppinglist.ui.shoppinglist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.eddieshin.shoppinglist.R
@@ -23,10 +24,14 @@ class ShoppingActivity : AppCompatActivity() {
         val viewModel = ViewModelProvider(this, factory).get(ShoppingViewModel::class.java)
 
         val items = createSampleItems()
-        val adapter = ShoppingItemAdapter(this, items)
+        val adapter = ShoppingItemAdapter(viewModel, items)
 
         rvItems.layoutManager = LinearLayoutManager(this)
         rvItems.adapter = adapter
+
+        viewModel.getAllShoppingItems().observe(this, Observer {
+
+        })
     }
 
     private fun createSampleItems() : List<ShoppingItem> {

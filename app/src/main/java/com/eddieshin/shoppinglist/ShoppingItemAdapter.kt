@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.eddieshin.shoppinglist.data.db.entities.ShoppingItem
+import com.eddieshin.shoppinglist.ui.shoppinglist.ShoppingViewModel
+import kotlinx.android.synthetic.main.shopping_item.view.*
 
-class ShoppingItemAdapter(val context: Context, val items: List<ShoppingItem>) : RecyclerView.Adapter<ShoppingItemAdapter.ShoppingViewHolder>() {
+class ShoppingItemAdapter(private val viewModel: ShoppingViewModel, val items: List<ShoppingItem>) : RecyclerView.Adapter<ShoppingItemAdapter.ShoppingViewHolder>() {
 
     companion object {
         private const val TAG = "ItemsAdapter"
@@ -18,7 +20,7 @@ class ShoppingItemAdapter(val context: Context, val items: List<ShoppingItem>) :
     inner class ShoppingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoppingViewHolder {
-        return ShoppingViewHolder(LayoutInflater.from(context).inflate(R.layout.shopping_item, parent, false))
+        return ShoppingViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.shopping_item, parent, false))
     }
 
     override fun onBindViewHolder(holder: ShoppingViewHolder, position: Int) {
@@ -31,6 +33,21 @@ class ShoppingItemAdapter(val context: Context, val items: List<ShoppingItem>) :
 
         tvName.text = item.name
         tvAmount.text = item.amount.toString()
+
+        holder.itemView.ivDelete.setOnClickListener {
+            viewModel.delete(item)
+        }
+
+        holder.itemView.ivPlus.setOnClickListener {
+            item.amount++
+            viewModel.upsert(item)
+
+        }
+
+        holder.itemView.ivMinus.setOnClickListener {
+            item.amount--
+            viewModel.upsert(item)
+        }
     }
 
     override fun getItemCount(): Int {
