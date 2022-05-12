@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.dialog_add_shopping_item.*
 class AddShoppingItemDialog(context: Context, var addDialogListener: AddDialogListener) : AppCompatDialog(context) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.dialog_add_shopping_item)
 
         btnAdd.setOnClickListener {
 

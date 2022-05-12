@@ -11,7 +11,7 @@ import com.eddieshin.shoppinglist.data.db.entities.ShoppingItem
 import com.eddieshin.shoppinglist.ui.shoppinglist.ShoppingViewModel
 import kotlinx.android.synthetic.main.shopping_item.view.*
 
-class ShoppingItemAdapter(private val viewModel: ShoppingViewModel, val items: List<ShoppingItem>) : RecyclerView.Adapter<ShoppingItemAdapter.ShoppingViewHolder>() {
+class ShoppingItemAdapter(private val viewModel: ShoppingViewModel, var items: List<ShoppingItem>) : RecyclerView.Adapter<ShoppingItemAdapter.ShoppingViewHolder>() {
 
     companion object {
         private const val TAG = "ItemsAdapter"

@@ -11,6 +11,7 @@ import com.eddieshin.shoppinglist.data.db.entities.ShoppingItem
     version = 1
 )
 abstract class ShoppingDatabase : RoomDatabase() {
+
     abstract fun getShoppingDao(): ShoppingDao
 
     companion object {
