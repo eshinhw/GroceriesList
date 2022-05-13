@@ -45,6 +45,11 @@ class ShoppingActivity : AppCompatActivity(), KodeinAware {
                 }
             }).show()
         }
+
+        val dummyItems = createSampleItems()
+        for (item in dummyItems) {
+            viewModel.upsert(item)
+        }
     }
 
     private fun createSampleItems() : List<ShoppingItem> {
