@@ -10,7 +10,7 @@ interface ShoppingDao {
     @Insert(onConflict=OnConflictStrategy.REPLACE)
     suspend fun upsert(item: ShoppingItem)
 
-    @Delete()
+    @Delete
     suspend fun delete(item: ShoppingItem)
 
     @Query("SELECT * FROM shopping_items")

@@ -10,9 +10,11 @@ import com.eddieshin.shoppinglist.data.db.entities.ShoppingItem
     entities = [ShoppingItem::class],
     version = 1
 )
+
+
 abstract class ShoppingDatabase : RoomDatabase() {
 
-    abstract fun getShoppingDao(): ShoppingDao
+    abstract val shoppingDao: ShoppingDao
 
     companion object {
         @Volatile // one thread at a time
@@ -31,3 +33,29 @@ abstract class ShoppingDatabase : RoomDatabase() {
                 ShoppingDatabase::class.java, "ShoppingDB.db").build()
     }
 }
+
+/*
+abstract class ShoppingDatabase : RoomDatabase() {
+
+    abstract val shoppingDao: ShoppingDao
+
+    companion object {
+        @Volatile // one thread at a time
+        private var INSTANCE: ShoppingDatabase? = null
+
+        private val LOCK = Any()
+
+        fun getInstance(context: Context): ShoppingDatabase {
+            synchronized(this) {
+                return INSTANCE ?: Room.databaseBuilder(
+                    context.applicationContext,
+                    ShoppingDatabase::class.java,
+                    "ShoppingDB.db"
+                ).build().also {
+                    INSTANCE = it
+                }
+            }
+        }
+    }
+}
+ */
