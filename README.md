@@ -1,4 +1,4 @@
-# ShoppingList
+# Groceries List
 
 - MVVM Design Pattern
 - Room Persistency Library
